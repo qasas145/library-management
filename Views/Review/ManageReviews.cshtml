@@ -1,0 +1,25 @@
+@model IEnumerable<ReviewDTO>;
+
+    
+<table class="table">
+  <thead>
+    <tr>
+      @* <th scope="col">id</th> *@
+      <th scope="col">BookId</th>
+      <th scope="col">UserName</th>
+      <th scope="col">Comment</th>
+      <th scope="col">Rating</th>
+    </tr>
+  </thead>
+  <tbody>
+    @foreach(ReviewDTO review in Model){
+        <tr>
+            @* <th scope="row">@book.Id</th> *@
+            <td>@review.BookId</td>
+            <td>@review.UserName</td>
+            <td>@review.Comment</td>
+            <td>@review.Rating</td>
+        </tr>
+    }
+  </tbody>
+</table>

@@ -1,0 +1,23 @@
+@model IEnumerable<OrderDTO>;
+
+    
+<table class="table">
+  <thead>
+    <tr>
+      @* <th scope="col">id</th> *@
+      <th scope="col">user id</th>
+      <th scope="col">order date</th>
+      <th scope="col">total amount</th>
+    </tr>
+  </thead>
+  <tbody>
+    @foreach(OrderDTO order in Model){
+        <tr>
+            @* <th scope="row">@book.Id</th> *@
+            <td>@order.UserId</td>
+            <td>@order.OrderDate</td>
+            <td>@order.TotalAmount</td>
+        </tr>
+    }
+  </tbody>
+</table>
