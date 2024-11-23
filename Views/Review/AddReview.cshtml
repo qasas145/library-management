@@ -1,0 +1,59 @@
+<form class="review-form">
+  <div class="form-group">
+    <label for="bookId">book id</label>
+    <input type="number" class="form-control" id="bookId" aria-describedby="bookIdHelp" placeholder="Enter email">
+    <small id="bookIdHelp" class="form-text text-muted">Id</small>
+  </div>
+
+  <div class="form-group">
+    <label for="username">username </label>
+    <input type="text" class="form-control" id="username" aria-describedby="usernameHelp" placeholder="Enter your username">
+    <small id="usernameHelp" class="form-text text-muted">username </small>
+  </div>
+
+  <div class="form-group">
+    <label for="comment">comment </label>
+    <input type="text" class="form-control" id="comment" aria-describedby="commentHelp" placeholder="enter your comment">
+    <small id="commentHelp" class="form-text text-muted">comment</small>
+  </div>
+
+  <div class="form-group">
+    <label for="rating">rating</label>
+    <input type="number" class="form-control" id="rating" aria-describedby="ratingHelp" placeholder="enter your rating">
+    <small id="ratingHelp" class="form-text text-muted">rating</small>
+  </div>
+  
+  <button type="submit" class="submit btn btn-primary">Submit</button>
+</form>
+
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+  $(".review-form").on("submit", function(e){
+    e.preventDefault();
+    
+  $.ajax({
+    url: "/review/submitreview",
+    type : "post",
+    data : {
+      BookId : $("#bookId").val(),
+      UserName : $("#username").val(),
+      Comment : $("#comment").val(),
+      Rating : $("#rating").val()
+    },
+    success : function(response) {
+      alert(response);
+      $("#bookId").val(""); //# $("#bookId").attr("placeholder","enter your email");
+      $("#username").val("");
+      $("#comment").val("");
+      $("#rating").val("");
+    },
+    error : function(error) {
+      console.log(error);
+    }
+  })
+ 
+ 
+  })
+</script>
