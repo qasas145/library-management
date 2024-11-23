@@ -1,4 +1,3 @@
-
 public class ReviewRepository : IRepository<Review>
 {
     List<Review> reviews = new List<Review>
@@ -19,10 +18,12 @@ public class ReviewRepository : IRepository<Review>
             Comment = "Very informative for beginners in Java",
             Rating = 4
         }
+    
     };
     public void Add(Review obj)
     {
         reviews.Add(obj);
+        
     }
 
     public void Delete(int id)

@@ -19,10 +19,31 @@
         <td>@Model.Price</td>
         <td>@Model.AverageRating</td>
         <td class="btns">
-            <button class="btn btn-primary"> add to cart</button>
+            <button class="btn btn-primary addBtn" onclick="AddBtn(@Model.Id, @Model.Price)"> add to cart</button>
         </td>
     </tr>
   </tbody>
 </table>
 
 @* ajax add book to cart  *@
+
+<script>
+  function AddBtn(bookId, price) {
+    $.ajax({
+      url: "/book/addtocart",
+      type : "post",
+      data : {
+        BookId : bookId,
+        Quantity : 1,
+        Price : price,
+      },
+      success : function(response) {
+        alert(response);
+      },
+      error : function(error) {
+        console.log(error);
+      }
+    });
+    
+  }
+</script>

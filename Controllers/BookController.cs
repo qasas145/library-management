@@ -1,3 +1,4 @@
+using System.Text.Json;
 using DTOS;
 using Microsoft.AspNetCore.Mvc;
 
@@ -17,10 +18,11 @@ public class BookController : Controller {
         Book b = _repository.GetById(id);
         return View(new BookDTO(){author = b.Author, AverageRating= b.AverageRating, Id = b.Id, Price = b.Price, Title = b.Title});
     }
+    [HttpPost]
     public IActionResult AddToCart(CartItem cartItem)  {
-        // i will implement later 
-        // Cart cart = new Cart();
-        // cart.AddToCart(cartItem);
-        return View();
+        var cart = JsonSerializer.Deserialize<Cart>(HttpContext.Session.GetString("cart"));
+        cart.AddToCart(cartItem);
+        HttpContext.Session.SetString("cart", JsonSerializer.Serialize(cart));
+        return Ok("The book has added to the cart");
     }
 }

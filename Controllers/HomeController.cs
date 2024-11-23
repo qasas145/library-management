@@ -1,6 +1,7 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using libraryManagment.Models;
+using System.Text.Json;
 
 namespace libraryManagment.Controllers;
 
@@ -15,6 +16,10 @@ public class HomeController : Controller
 
     public IActionResult Index()
     {
+        var cart = new Cart(){UserId = 1, Id = 1};
+        var cartJson = JsonSerializer.Serialize(cart);
+        HttpContext.Session.SetString("cart", cartJson);
+        Console.WriteLine("The cart has been added");
         return View();
     }
 

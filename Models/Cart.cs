@@ -1,8 +1,15 @@
 public class Cart {
     public int Id{get;set;}
     public int UserId{get;set;}
-    private IList<CartItem> cartItems;
+    public List<CartItem> CartItems {get;set;}
+    
     public void AddToCart(CartItem cart) {
-        this.cartItems.Add(cart);
+        if (CartItems is not null){
+            this.CartItems.Add(cart);
+        }
+        else {
+            CartItems = new List<CartItem>();
+            CartItems.Add(cart);
+        }
     }
 }

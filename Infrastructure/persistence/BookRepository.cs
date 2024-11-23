@@ -3,7 +3,7 @@ public class BookRepository : IRepository<Book>
 {
     List<Book> books = new List<Book>
     {
-        new Book { Id = 1, Title = "C# Programming", Author = "John Doe", Price = 29.99m, Description = "A comprehensive guide to C# programming.", StockQuantity = 100, AverageRating = 10 },
+        new Book { Id = 1, Title = "C# Programming", Author = "John Doe", Price = 100m, Description = "A comprehensive guide to C# programming.", StockQuantity = 100, AverageRating = 10 },
         new Book { Id = 2, Title = "Java Basics", Author = "Jane Smith", Price = 24.99m, Description = "Learn the basics of Java programming.", StockQuantity = 50, AverageRating = 4 },
         new Book { Id = 3, Title = "Python for Data Science", Author = "Alice Johnson", Price = 34.99m, Description = "Master Python for data science and machine learning.", StockQuantity = 75, AverageRating = 4 },
         new Book { Id = 4, Title = "Web Development with React", Author = "Bob Brown", Price = 39.99m, Description = "A guide to building modern web apps with React.", StockQuantity = 30, AverageRating = 4 },

@@ -8,7 +8,6 @@ public class OrderRepository : IRepository<Order>
             Id = 1,
             UserId = 101,
             OrderDate = new DateTime(2024, 11, 20),
-            TotalAmount = 100,
             OrderItems = new List<OrderItem>
             {
                 new OrderItem { OrderId = 1, BookId = 1, Quantity = 1, Price = 50 },
@@ -20,7 +19,6 @@ public class OrderRepository : IRepository<Order>
             Id = 2,
             UserId = 102,
             OrderDate = new DateTime(2024, 11, 21),
-            TotalAmount = 200,
             OrderItems = new List<OrderItem>
             {
                 new OrderItem { OrderId = 2, BookId = 3, Quantity = 1, Price = 75 },

@@ -14,8 +14,13 @@ public class ReviewController : Controller{
         var reviews = _repository.GetAll().Select(r=>new ReviewDTO(){Id = r.Id, BookId = r.BookId, Comment = r.Comment, Rating = r.Rating, UserName = r.UserName});
         return View(reviews);
     }
+    public IActionResult AddReview() {
+        return View();
+    }
+    
+    [HttpPost]
     public IActionResult SubmitReview(Review review) {
         _repository.Add(review);
-        return View();
+        return Ok("the review has been added sucessfully");
     }
 }
