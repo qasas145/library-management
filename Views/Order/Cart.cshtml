@@ -1,0 +1,52 @@
+@model CartDTO
+@{
+    var cartItemsJson = JsonSerializer.Serialize(@Model.cartItems);
+}
+
+<p>User id is @Model.UserId</p>
+
+<table class="table">
+  <thead>
+    <tr>
+      @* <th scope="col">id</th> *@
+      <th scope="col">book id</th>
+      <th scope="col">quantity</th>
+      <th scope="col">price</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    @foreach(CartItem item in @Model.cartItems) {
+        <tr>
+            @* <th scope="row">@book.Id</th> *@
+            <td>@item.BookId</td>
+            <td>@item.Quantity</td>
+            <td>@item.Price</td>
+        </tr>
+    }
+  </tbody>
+  <button class="btn btn-primary" onclick="confirmOrder()">Confirm Order</button>
+</table>
+
+<script>
+    function confirmOrder() {
+        
+        $.ajax({
+            url : "/order/placeholder",
+            type : "post",
+            data : {
+                Id : @Model.Id, 
+                userId : @Model.UserId,
+                CartItems : @Html.Raw(@cartItemsJson),
+            },
+            success : function(response) {
+                alert(response);
+            },
+            error : function(error) {
+                alert("error");
+                console.log(error);
+            }
+            
+        })
+    }
+</script>
